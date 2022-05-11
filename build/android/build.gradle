@@ -1,0 +1,47 @@
+buildscript { 
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4' 
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig { 
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core:1.6.0' }
+        }
+        minSdkVersion 31
+        targetSdkVersion 31  
+    }
+
+   
+}
+ 
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://artifacts.bitmovin.com/artifactory/public-releases'
+        }
+    }
+}
+
+
+dependencies {
+   // implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.bitmovin.player:player:3.18.0'
+}

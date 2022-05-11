@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="testeplugin" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>testeplugin</name>
+    <js-module name="testeplugin" src="www/testeplugin.js">
+        <clobbers target="cordova.plugins.testeplugin" />
+    </js-module>
+    <platform name="android">
+        <framework src="build/android/build.gradle" custom="true" type="gradleReference" />
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="testeplugin">
+                <param name="android-package" value="testeplugin.testeplugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:label="New Activity" android:name="testeplugin.PlayerActivity"></activity>
+            <meta-data android:name="BITMOVIN_PLAYER_LICENSE_KEY" android:value="57855f1b-430d-44a2-97bc-b2dd3e47aa77" />
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/testeplugin.java" target-dir="src/testeplugin/testeplugin" />
+        <source-file src="src/android/PlayerActivity.java" target-dir="src/testeplugin/plugin" />
+        <source-file src="src/android/activity_player.xml" target-dir="res/layout" />
+    </platform>
+</plugin>
